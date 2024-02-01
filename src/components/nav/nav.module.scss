@@ -1,0 +1,43 @@
+.navContainer {
+  position: fixed;
+  width: 100vw;
+  padding: 15px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.125rem;
+  letter-spacing: -0.04rem;
+  border-bottom: 1px solid #ccc;
+
+  button {
+    font-size: 1.125rem;
+  }
+}
+.navLeft {
+  display: flex;
+  align-items: center;
+
+  .logo {
+    display: block;
+    width: 100px;
+    height: 30px;
+
+    > img {
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+.navRight {
+  display: flex;
+  align-items: center;
+
+  .searchBar {
+    margin-right: 15px;
+  }
+  .userFnc {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
