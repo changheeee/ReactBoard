@@ -17,14 +17,10 @@ function Nav() {
   };
 
   return (
-    <div
-      className={style.navWrapper}
-      onMouseEnter={showSubMenu}
-      onMouseLeave={hideSubMenu}
-    >
+    <div className={style.navWrapper} onMouseLeave={hideSubMenu}>
       <div className={style.navContainer}>
         <div className={style.userFnc}></div>
-        <div className={style.logoContainer}>
+        <div className={style.logoContainer} onMouseEnter={showSubMenu}>
           <Link
             to="/"
             className={style.logo}

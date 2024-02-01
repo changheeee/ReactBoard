@@ -1,0 +1,70 @@
+.postContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+  .postListWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    width: 350px;
+    height: 500px;
+    border: 1px solid #d9d9d9;
+    border-radius: 15px;
+
+    .postListIn {
+      h2 {
+        width: 100%;
+        overflow: hidden;
+        font-size: 22px;
+        color: #333;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+      }
+      .postInfo {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #999;
+        letter-spacing: -0.04em;
+        display: flex;
+        justify-content: space-between;
+        span {
+          display: flex;
+          gap: 5px;
+        }
+        .viewAndLike {
+          display: flex;
+          gap: 12px;
+        }
+      }
+      .thumbnail {
+        margin-top: 12px;
+        width: 100%;
+        height: 225px;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+      p {
+        width: 100%;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: -0.035rem;
+        color: #999;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4; // 표시할 줄 수
+        -webkit-box-orient: vertical;
+      }
+    }
+    b {
+      display: flex;
+      gap: 5px;
+      font-size: 16px;
+      color: #333;
+      font-weight: 400;
+    }
+  }
+}
