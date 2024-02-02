@@ -7,11 +7,11 @@ function Home() {
     <div className={style.homeWrapper}>
       <SearchBar />
 
-      <h2>BEST</h2>
-      <PostCard />
+      <h2>게시판1 베스트</h2>
+      <PostCard postType={"heart"} />
 
-      <h2>BEST</h2>
-      <PostCard />
+      <h2>게시판2 베스트</h2>
+      <PostCard postType={"cloud"} />
     </div>
   );
 }

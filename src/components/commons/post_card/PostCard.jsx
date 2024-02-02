@@ -10,10 +10,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-function PostCard() {
+function PostCard({ postType }) {
   const numberOfPosts = 9; // 생성할 포스트의 수
   const postData = [];
-  const [postyType, setPostType] = useState(true);
 
   for (let i = 0; i < numberOfPosts; i++) {
     postData.push({
@@ -37,7 +36,11 @@ function PostCard() {
         pagination={{
           clickable: true,
           renderBullet: function (index, className) {
-            return `<img class="${className}" src='/images/ico_heart.svg'>`;
+            return `<img class="${className}" src=${
+              postType === "heart"
+                ? "/images/ico_heart.svg"
+                : "/images/ico_cloud.svg"
+            } + />`;
           },
         }}
         modules={[Pagination, A11y]}

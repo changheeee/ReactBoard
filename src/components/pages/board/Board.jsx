@@ -6,7 +6,7 @@ function Board() {
   return (
     <div className={style.pageWrapper}>
       <PageTitle pageType={"board1"} />
-      <PostBar />
+      <PostBar boardType={"heart"} />
     </div>
   );
 }
