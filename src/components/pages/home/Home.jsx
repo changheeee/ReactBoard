@@ -4,7 +4,7 @@ import SearchBar from "components/commons/search_bar/SearchBar";
 
 function Home() {
   return (
-    <div className={style.contentWrapper}>
+    <div className={style.homeWrapper}>
       <SearchBar />
 
       <h2>BEST</h2>

@@ -1,7 +1,25 @@
-.contentWrapper {
+.homeWrapper {
   width: 100%;
-  padding-top: 100px;
-  // border: 1px solid red;
+  max-width: 1080px;
+  padding-top: 180px;
+  @media (max-width: 1200px) {
+    width: 600px;
+  }
+  @media (max-width: 768px) {
+    // width: 400px;
+  }
+
+  > h2 {
+    font-size: 33px;
+    margin-top: 80px;
+    margin-bottom: 20px;
+  }
+}
+
+.pageWrapper {
+  width: 100%;
+  max-width: 1080px;
+  padding-top: 80px;
 
   > h2 {
     font-size: 33px;

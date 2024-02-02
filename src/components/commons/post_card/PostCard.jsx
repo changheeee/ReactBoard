@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import style from "./postCard.module.scss";
-import "./swiper.scss";
+
 import { fakerKO as faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper/modules";
-
+import "./swiper.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 
 function PostCard() {
   const numberOfPosts = 9; // 생성할 포스트의 수
@@ -46,25 +41,23 @@ function PostCard() {
           },
         }}
         modules={[Pagination, A11y]}
+        centeredSlides={true}
+        loop={true}
         spaceBetween={10}
         slidesPerView={3}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
         breakpoints={{
-          640: {
+          600: {
             slidesPerView: 1,
             spaceBetween: 20,
           },
-          1000: {
+          1200: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 10,
           },
           1400: {
             slidesPerView: 3,
-            spaceBetween: 20,
-          },
-          1920: {
-            slidesPerView: 4,
             spaceBetween: 10,
           },
         }}

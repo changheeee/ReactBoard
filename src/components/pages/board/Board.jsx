@@ -1,7 +1,14 @@
-import React from "react";
+import style from "components/_styles/layout.module.scss";
+import PageTitle from "components/commons/page_title/PageTitle";
+import PostBar from "components/commons/post_bar/PostBar";
 
 function Board() {
-  return <div>Board1</div>;
+  return (
+    <div className={style.pageWrapper}>
+      <PageTitle pageType={"board1"} />
+      <PostBar />
+    </div>
+  );
 }
 
 export default Board;

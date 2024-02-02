@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./pageTitle.module.scss";
 
 function PageTitle({ pageType }) {
   let title;
@@ -18,7 +19,7 @@ function PageTitle({ pageType }) {
       title = "페이지 제목 없음";
   }
 
-  return <div>{title}</div>;
+  return <div className={style.pageTitleContainer}>{title}</div>;
 }
 
 export default PageTitle;
