@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./postCard.module.scss";
 import "./swiper.scss";
 import { fakerKO as faker } from "@faker-js/faker";
@@ -18,12 +18,14 @@ import "swiper/css/scrollbar";
 function PostCard() {
   const numberOfPosts = 9; // 생성할 포스트의 수
   const postData = [];
+  const [postyType, setPostType] = useState(true);
 
   for (let i = 0; i < numberOfPosts; i++) {
     postData.push({
       id: i,
       author: faker.person.firstName(),
       userType: faker.datatype.boolean(),
+      postType: faker.datatype.boolean(),
       title: faker.lorem.sentence(),
       content: faker.lorem.paragraphs(),
       createdAt: dayjs(faker.date.past()).format("YYYY.MM.DD"),

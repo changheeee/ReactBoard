@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import Nav from "components/pages/nav/Nav";
+import Nav from "components/commons/nav/Nav";
 import MainRouter from "routes";
 import "styles/globals.scss";
 
