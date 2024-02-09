@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 import "dayjs/locale/ko"; // 한국어 로케일 추가
+import CategoryBadge from "../_components/CategoryBadge";
 dayjs.extend(relativeTime);
 dayjs.locale("ko"); // 전역 로케일을 한국어로 설정
 
@@ -13,6 +14,19 @@ function PostBar({ boardType }) {
   let initialPostData = [];
   const [postData, setPostData] = useState([]);
   const [sortType, setSortType] = useState("최신순"); // 정렬 타입 상태
+  const categories = [
+    "일반",
+    "연애",
+    "결혼",
+    "육아",
+    "가족",
+    "친구",
+    "학교",
+    "회사",
+    "골라줘",
+    "몇대몇",
+    "YES or No",
+  ];
 
   for (let i = 0; i < numberOfPosts; i++) {
     postData.push({
@@ -26,6 +40,7 @@ function PostBar({ boardType }) {
       likes: faker.number.int({ min: 0, max: 100 }),
       views: faker.number.int({ min: 0, max: 1000 }),
       imageUrl: faker.image.urlLoremFlickr(),
+      category: faker.helpers.arrayElement(categories), // 카테고리 랜덤 지정
     });
   }
 
@@ -98,19 +113,20 @@ function PostBar({ boardType }) {
         {postData.map((post) => (
           <li key={post} className={style.postList}>
             <div className={style.postListIn}>
-              <h2>{post.title}</h2>
+              <CategoryBadge category={post.category} />
               <div className={style.postInfoTop}>
-                <div className={style.createdAtWrap}>
-                  <span>
-                    <img src="/images/ico_createdAt.svg" alt="user_icon" />
-                    {dayjs(post.createdAt).fromNow()}
-                  </span>
-                  <span>|</span>
-                  <span>{post.createdAt}</span>
-                </div>
+                <h2>{post.title}</h2>
                 <button>
                   <img src="/images/ico_bookmark_default.svg" alt="" />
                 </button>
+              </div>
+              <div className={style.createdAtWrap}>
+                <span>
+                  <img src="/images/ico_createdAt.svg" alt="user_icon" />
+                  {dayjs(post.createdAt).fromNow()}
+                </span>
+                <span>|</span>
+                <span>{post.createdAt}</span>
               </div>
               <p>{post.content}</p>
               <div className={style.postInfoBot}>

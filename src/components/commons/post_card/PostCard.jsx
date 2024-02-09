@@ -9,10 +9,24 @@ import "./swiper.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import CategoryBadge from "../_components/CategoryBadge";
 
 function PostCard({ postType }) {
-  const numberOfPosts = 9; // 생성할 포스트의 수
+  const numberOfPosts = 9;
   const postData = [];
+  const categories = [
+    "일반",
+    "연애",
+    "결혼",
+    "육아",
+    "가족",
+    "친구",
+    "학교",
+    "회사",
+    "골라줘",
+    "몇대몇",
+    "YES or No",
+  ];
 
   for (let i = 0; i < numberOfPosts; i++) {
     postData.push({
@@ -26,6 +40,7 @@ function PostCard({ postType }) {
       likes: faker.number.int({ min: 0, max: 100 }),
       views: faker.number.int({ min: 0, max: 1000 }),
       imageUrl: faker.image.urlLoremFlickr(),
+      category: faker.helpers.arrayElement(categories), // 카테고리 랜덤 지정
     });
   }
 
@@ -68,6 +83,7 @@ function PostCard({ postType }) {
         {postData.map((post) => (
           <SwiperSlide key={post.id} className={style.postListWrap}>
             <div className={style.postListIn}>
+              <CategoryBadge category={post.category} />
               <h2>{post.title}</h2>
               <div className={style.postInfo}>
                 <span>
