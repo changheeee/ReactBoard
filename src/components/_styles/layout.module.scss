@@ -1,6 +1,15 @@
-.homeWrapper {
+.container {
+  display: flex;
+  justify-content: center;
+
   width: 100%;
-  max-width: 1080px;
+  overflow: hidden;
+}
+
+.homeWrapper {
+  // margin: 0 auto;
+  width: 100%;
+  min-width: 1080px;
   padding-top: 180px;
   @media (max-width: 1200px) {
     width: 600px;

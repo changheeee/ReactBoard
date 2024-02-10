@@ -52,10 +52,10 @@ function Nav() {
           subMenuHide ? style.subMenuVisible : ""
         }`}
       >
-        <Link to="/board" className={style.logo}>
+        <Link to="/heart" className={style.logo}>
           <img src="/images/ico_heart.svg" alt="" />
         </Link>
-        <Link to="/board2" className={style.logo}>
+        <Link to="/cloud" className={style.logo}>
           <img src="/images/ico_cloud.svg" alt="" />
         </Link>
       </div>

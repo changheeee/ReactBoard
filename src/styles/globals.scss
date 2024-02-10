@@ -1,13 +1,15 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Pretendard Variable", Pretendard, -apple-system,
+  font-family: "Montserrat", "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
     "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  letter-spacing: -0.04rem;
 }
 
 ol,
@@ -29,12 +31,4 @@ button {
   cursor: pointer;
   border: none;
   background: none;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-
-  width: 100%;
-  overflow: hidden;
 }

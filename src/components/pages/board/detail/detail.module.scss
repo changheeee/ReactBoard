@@ -1,0 +1,31 @@
+.header {
+  padding: 6px 0 14px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  > h3 {
+    font-size: 30px;
+    font-weight: 600;
+  }
+}
+
+.postInfo {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #999;
+  color: #555;
+  font-size: 16px;
+
+  .authorCreated {
+    display: flex;
+    gap: 23px;
+  }
+}
+
+.postContent {
+  padding: 50px 0 100px 0;
+  font-size: 18px;
+  line-height: 30px;
+}

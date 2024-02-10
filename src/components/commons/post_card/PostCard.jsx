@@ -66,14 +66,10 @@ function PostCard({ postType }) {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
         breakpoints={{
-          600: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          1200: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
+          // 1000: {
+          //   slidesPerView: 2,
+          //   spaceBetween: 10,
+          // },
           1400: {
             slidesPerView: 3,
             spaceBetween: 10,
