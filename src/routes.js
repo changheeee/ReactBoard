@@ -1,5 +1,6 @@
 import Board from "components/pages/board/Board";
 import Board2 from "components/pages/board2/Board2";
+import Detail from "components/pages/detail/Detail";
 import Home from "components/pages/home/Home";
 import Join from "components/pages/join/Join";
 import Login from "components/pages/login/Login";
@@ -17,6 +18,7 @@ export default function MainRouter() {
       <Route path="/join" element={<Join />}></Route>
       <Route path="/mypage" element={<Mypage />}></Route>
       <Route path="/search" element={<Search />}></Route>
+      <Route path="/detail" element={<Detail />}></Route>
     </Routes>
   );
 }

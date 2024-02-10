@@ -1,48 +1,52 @@
 import React, { useState, useEffect } from "react";
 import style from "./postBar.module.scss";
-import { fakerKO as faker } from "@faker-js/faker";
+import CategoryBadge from "../_components/CategoryBadge";
+import { MockData } from "MOCK_DATA";
+// import { fakerKO as faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 import "dayjs/locale/ko"; // 한국어 로케일 추가
-import CategoryBadge from "../_components/CategoryBadge";
 dayjs.extend(relativeTime);
 dayjs.locale("ko"); // 전역 로케일을 한국어로 설정
 
 function PostBar({ boardType }) {
-  const numberOfPosts = 9; // 생성할 포스트의 수
-  let initialPostData = [];
   const [postData, setPostData] = useState([]);
   const [sortType, setSortType] = useState("최신순"); // 정렬 타입 상태
-  const categories = [
-    "일반",
-    "연애",
-    "결혼",
-    "육아",
-    "가족",
-    "친구",
-    "학교",
-    "회사",
-    "골라줘",
-    "몇대몇",
-    "YES or No",
-  ];
 
-  for (let i = 0; i < numberOfPosts; i++) {
-    postData.push({
-      id: i,
-      author: faker.person.firstName(),
-      userType: faker.datatype.boolean(),
-      postType: faker.datatype.boolean(),
-      title: faker.lorem.sentence(),
-      content: faker.lorem.paragraphs(),
-      createdAt: dayjs(faker.date.past()).format("YYYY.MM.DD"),
-      likes: faker.number.int({ min: 0, max: 100 }),
-      views: faker.number.int({ min: 0, max: 1000 }),
-      imageUrl: faker.image.urlLoremFlickr(),
-      category: faker.helpers.arrayElement(categories), // 카테고리 랜덤 지정
+  useEffect(() => {
+    // 초기 데이터 로딩
+    loadAndSortData();
+  }, []);
+
+  useEffect(() => {
+    // sortType 변경 시, 데이터를 다시 정렬합니다.
+    loadAndSortData();
+  }, [sortType]);
+
+  const loadAndSortData = () => {
+    let data = MockData();
+    data = sortPosts(sortType, data); // 정렬 로직을 적용한 후 상태 업데이트
+    setPostData(data);
+  };
+
+  const sortPosts = (type, data) => {
+    return [...data].sort((a, b) => {
+      if (type === "최신순") {
+        return (
+          dayjs(b.createdAt, "YYYY.MM.DD").unix() -
+          dayjs(a.createdAt, "YYYY.MM.DD").unix()
+        );
+      } else if (type === "인기순") {
+        return b.likes - a.likes;
+      }
+      return 0;
     });
-  }
+  };
+
+  const handleSortChange = (type) => {
+    setSortType(type); // 정렬 타입 변경
+  };
 
   const getActiveClass = (type) => {
     const isActive = sortType === type;
@@ -51,32 +55,6 @@ function PostBar({ boardType }) {
     // boardType에 따라 다른 스타일 클래스 반환
     return boardType === "heart" ? style.btnHeart : style.btnCloud;
   };
-
-  // 최신순, 인기순 정렬 함수
-  const sortPosts = (type) => {
-    if (type === "최신순") {
-      setPostData(
-        [...initialPostData].sort(
-          (a, b) =>
-            dayjs(b.createdAt, "YYYY.MM.DD").unix() -
-            dayjs(a.createdAt, "YYYY.MM.DD").unix()
-        )
-      );
-    } else if (type === "인기순") {
-      setPostData([...initialPostData].sort((a, b) => b.likes - a.likes));
-    }
-  };
-
-  // 정렬 타입 변경 핸들러
-  const handleSortChange = (type) => {
-    setSortType(type); // 클릭된 버튼의 타입으로 sortType 상태 업데이트
-    sortPosts(type);
-  };
-
-  // 컴포넌트 마운트 시 최초 정렬 실행
-  React.useEffect(() => {
-    sortPosts(sortType);
-  }, []);
 
   return (
     <>
@@ -111,7 +89,7 @@ function PostBar({ boardType }) {
 
       <ul className={style.postListWrap}>
         {postData.map((post) => (
-          <li key={post} className={style.postList}>
+          <li key={post.id} className={style.postList}>
             <div className={style.postListIn}>
               <CategoryBadge category={post.category} />
               <div className={style.postInfoTop}>
